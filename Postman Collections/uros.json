@@ -39,7 +39,8 @@
 					"query": [
 						{
 							"key": "format",
-							"value": "json"
+							"value": "json",
+							"description": "json data"
 						}
 					]
 				}
