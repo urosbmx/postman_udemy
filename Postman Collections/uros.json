@@ -1,0 +1,148 @@
+{
+	"info": {
+		"_postman_id": "bc35c19a-b826-4f53-bfc2-ab4c4d6f0db3",
+		"name": "My IP data",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "myIpadress",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d1b97364-78b1-4f48-be7e-8cff1e7649b7",
+						"exec": [
+							"let myIP = pm.response.json();\r",
+							"pm.globals.set(\"myIPadres\", myIP.ip);\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "7e8caa7d-5b86-48cc-b755-6579088b2183",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.ipify.org?format=json",
+					"protocol": "https",
+					"host": [
+						"api",
+						"ipify",
+						"org"
+					],
+					"query": [
+						{
+							"key": "format",
+							"value": "json"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "My Location",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f5085962-366c-41fc-b1a8-cf29267886ad",
+						"exec": [
+							"let adressL = pm.response.json();\r",
+							"let adressLG = pm.response.json();\r",
+							"pm.globals.set(\"latitude\", adressL.latitude);\r",
+							"pm.globals.set(\"longitude\",adressLG.longitude);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "364d6524-f705-4bf8-b564-909cf037f243",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://api.ipstack.com/{{myIPadres}}?access_key=c11715c47b790cd63a46400d17e207c3&format=1",
+					"protocol": "http",
+					"host": [
+						"api",
+						"ipstack",
+						"com"
+					],
+					"path": [
+						"{{myIPadres}}"
+					],
+					"query": [
+						{
+							"key": "access_key",
+							"value": "c11715c47b790cd63a46400d17e207c3"
+						},
+						{
+							"key": "format",
+							"value": "1"
+						},
+						{
+							"key": "ipadres",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "My corect location",
+			"_postman_id": "110744ba-f457-44d9-bdaf-b9ba78945093",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://api.positionstack.com/v1/reverse?access_key=58f7fa7ff9b758124a43c8ee96235746&query={{latitude}},{{longitude}}",
+					"protocol": "http",
+					"host": [
+						"api",
+						"positionstack",
+						"com"
+					],
+					"path": [
+						"v1",
+						"reverse"
+					],
+					"query": [
+						{
+							"key": "access_key",
+							"value": "58f7fa7ff9b758124a43c8ee96235746"
+						},
+						{
+							"key": "query",
+							"value": "{{latitude}},{{longitude}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
