@@ -21,7 +21,7 @@
 					}
 				}
 			],
-			"_postman_id": "7e8caa7d-5b86-48cc-b755-6579088b2183",
+			"id": "7e8caa7d-5b86-48cc-b755-6579088b2183",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -63,7 +63,7 @@
 					}
 				}
 			],
-			"_postman_id": "364d6524-f705-4bf8-b564-909cf037f243",
+			"id": "364d6524-f705-4bf8-b564-909cf037f243",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -101,7 +101,7 @@
 						},
 						{
 							"key": "ipadres",
-							"value": null,
+							"value": "",
 							"disabled": true
 						}
 					]
@@ -111,7 +111,7 @@
 		},
 		{
 			"name": "My corect location",
-			"_postman_id": "110744ba-f457-44d9-bdaf-b9ba78945093",
+			"id": "110744ba-f457-44d9-bdaf-b9ba78945093",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
