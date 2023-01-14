@@ -1,0 +1,126 @@
+{
+	"info": {
+		"_postman_id": "874d856d-f55b-438e-bbaa-905cb3370f50",
+		"name": "Order management",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Generate reference",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "7bf1a2ba-362d-412f-9e87-4705fe839eb8",
+						"exec": [
+							"const response = pm.response.json();",
+							"",
+							"",
+							"pm.test(\"Should contain reference id\", function () {",
+							"    pm.expect(response.uuid).to.exist;",
+							"});",
+							"",
+							"pm.globals.set(\"referenceId\", response.uuid);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "0664ba24-b507-4fee-b96c-7e560a09fde1",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "httpbin.org/uuid"
+			},
+			"response": []
+		},
+		{
+			"name": "Create order",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "93453534-0d34-40fa-853d-0a7a2b70f81f",
+						"exec": [
+							"// const response = pm.response.json();",
+							"",
+							"// pm.test(\"Should contain the reference id\", function () {",
+							"//     pm.expect(response.json.referenceId).to.eql(pm.globals.get(\"referenceId\"));",
+							"// });",
+							"",
+							"// pm.test(\"Should contain the customer id\", function () {",
+							"//     pm.expect(response.json.customerId).to.eql(200);",
+							"// });",
+							"",
+							"// pm.test(\"Should contain the product id\", function () {",
+							"//     pm.expect(response.json.productId).to.eql(300);",
+							"// });",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "7ee16952-bb3a-453d-937d-bbd5ba2879c8",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"referenceId\": \"{{referenceId}}\",\n\t\"customerId\": {{customerId}},\n\t\"productId\": {{customerId}}\n}",
+					"options": {}
+				},
+				"url": "httpbin.org/post"
+			},
+			"response": []
+		},
+		{
+			"name": "Check status",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b49153a4-df64-412f-96aa-83a0272acd3a",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "835ef5c6-299e-4730-b59a-8f371f9fce4f",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"url": "httpbin.org/status/200"
+			},
+			"response": []
+		}
+	]
+}
